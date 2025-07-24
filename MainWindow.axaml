@@ -1,0 +1,57 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="BandaTransportadora.MainWindow"
+        Width="700" Height="300" Title="Simulación Banda Transportadora"
+        Background="#f0f4f8"
+        FontFamily="Segoe UI"
+        >
+
+  <Grid Margin="20">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="3*"/>
+      <ColumnDefinition Width="2*"/>
+    </Grid.ColumnDefinitions>
+
+    <!-- Área principal con banda y bote -->
+    <Border Grid.Column="0" CornerRadius="10" Background="White" Padding="20"
+            >
+      <!-- Aquí el Canvas SIN cornerRadius -->
+      <Canvas Background="#e1e7f0" Height="120" ClipToBounds="True">
+        <!-- Banda -->
+        <Rectangle x:Name="Banda" Width="550" Height="50" Fill="#7584a1" RadiusX="10" RadiusY="10" Canvas.Top="40" Canvas.Left="0"/>
+        <!-- Bote -->
+        <Ellipse x:Name="Bote" Width="50" Height="50" Fill="#4a90e2" Stroke="#2a5db0" StrokeThickness="3" Canvas.Top="35" Canvas.Left="10"/>
+      </Canvas>
+    </Border>
+
+    <!-- Panel derecho con controles e indicadores -->
+    <Border Grid.Column="1" Background="White" CornerRadius="10" Padding="20" Margin="20,0,0,0"
+            >
+      <StackPanel Orientation="Vertical" Spacing="20">
+
+        <TextBlock Text="Controles" FontWeight="Bold" FontSize="18" Margin="0,0,0,10" Foreground="#333"/>
+
+        <StackPanel Orientation="Horizontal" Spacing="10">
+          <Button x:Name="BtnIniciarMotor" Content="Iniciar Motor" Width="120" Background="#4caf50" Foreground="White" FontWeight="SemiBold" />
+          <Button x:Name="BtnActivarValvula" Content="Activar Válvula" Width="140" IsEnabled="False" Background="#2196f3" Foreground="White" FontWeight="SemiBold"/>
+          <Button x:Name="BtnFinalizar" Content="Finalizar" Width="120" IsEnabled="False" Background="#f44336" Foreground="White" FontWeight="SemiBold"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Spacing="10">
+          <TextBlock Text="Estado Motor:" FontWeight="Bold" Foreground="#555"/>
+          <Border x:Name="MotorIndicador" Width="40" Height="40" Background="Red" CornerRadius="10" HorizontalAlignment="Left" />
+
+          <TextBlock x:Name="LblMotorEstado" Text="Motor apagado" FontSize="14" FontWeight="SemiBold" Foreground="#555" Margin="0,5,0,15"/>
+
+          <TextBlock x:Name="LblValvulaEstado" Text="Válvula cerrada" FontWeight="Bold" FontSize="16" Foreground="#333" Margin="0,0,0,10"/>
+
+          <TextBlock x:Name="LblEstadoCubeta" Text="Cubeta: Vacía" FontWeight="Bold" FontSize="16" Foreground="#333"/>
+          <TextBlock x:Name="LblCubetaEnFinal" Text="Cubeta en final: No" FontWeight="Bold" FontSize="16" Foreground="#333"/>
+
+          <Button x:Name="BtnRetirarCubeta" Content="Retirar Cubeta" IsEnabled="False" Width="140" Background="#ff9800" Foreground="White" FontWeight="SemiBold" Margin="0,15,0,0"/>
+        </StackPanel>
+      </StackPanel>
+    </Border>
+
+  </Grid>
+</Window>
